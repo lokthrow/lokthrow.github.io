@@ -3,7 +3,7 @@
   <head>
     <!-- Page setup -->
     <meta charset="utf-8">
-    <title>MiraBolsa política de privacidad</title>
+    <title>Políticas de privacidad</title>
     <meta name="description" content="Página de la política de privacidad de MiraBolsa">
     <meta name="author" content="Alejandro Munoz @AlexJubilacion">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
@@ -28,14 +28,19 @@
   <body>
 
     <header id="header">
-      <img src="logo.png">
-      <h1>MiraBolsa</h1>
+      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
+      <ul class="main-menu">
+        <li><a href="#mirabolsa">MiraBolsa</a></li>
+        <li><a href="#tdiary">TDiary</a></li>
+      </ul>
+
+      <img id="logo" src="mirabolsa.png">
     </header>
    
     <div id="container">
       <div class="inner">
         <div id="content"> 
-          <div id="home" class="content-region">
+          <div id="mirabolsa" class="content-region hide">
             <h2>Política de privacidad</h2>
             <p>Al usar esta aplicación aceptas lo siguiente.</p>
             <p>MiraBolsa (en adelante "la aplicación") se proporciona "tal cual", sin garantía de ningún tipo.</p>
@@ -49,13 +54,37 @@
               <li>Información de diagnóstico</li>
               <li>Un identificador de tu dispositivo</li>
             </ul>
-            <p>Puedes consultar la política de privacidad de Google en https://policies.google.com/ y de Apple en https://www.apple.com/legal/privacy/</p>
+            <p>Puedes consultar la política de privacidad de Google en <a href="https://policies.google.com/">https://policies.google.com/</a> y de Apple en <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
+          </div>
+
+          <div id="tdiary" class="content-region hide">
+            <h2>Política de privacidad</h2>
+            <p>Al usar esta aplicación aceptas lo siguiente.</p>
+            <p>TDiary (en adelante "la aplicación") se proporciona "tal cual", sin garantía de ningún tipo.</p>
+            <p>La aplicación no recopila ni utiliza ningún dato personal en ningún servidor. Como no tengo ningún dato, no lo comparto ni lo vendo a terceros. Sí que recopilo de forma anónima las interacciones que haces con la aplicación para mejorarla.</p>
+            <p>Utilizo AdMob para gestionar la publicidad dentro de la aplicación. Admob pertenece a Google (puedes ver su política de privacidad más abajo). Al utilizar AdMob recopilo y comparto la siguiente información con ellos:</p>
+            <ul>
+              <li>Tu posición aproximada</li>
+              <li>Las interacciones que haces con la aplicación</li>
+              <li>Información de diagnóstico</li>
+              <li>Un identificador de tu dispositivo</li>
+            </ul>
+            <p>Los datos que grabas en tu teléfono (como entrenamientos, peso, altura...) permanecen allí, no se utiliza ninguna conexión a Internet para transmitirlos. Debido a este comportamiento, no hay opciones de sincronización disponibles.</p>
+            <p>Puedes consultar la política de privacidad de Google en <a href="https://policies.google.com/">https://policies.google.com/</a> y de Apple en <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
+
+            <h2>Términos del servicio</h2>
+            <p>Por favor, lea estos términos de servicio ("términos", "términos de servicio") atentamente antes de utilizar la aplicación móvil TDiary (el "Servicio") gestionado por TDiary ("nosotros" o "nuestro"), puestos a su disposición siguiendo la Política de privacidad de TDiary (la "Política de privacidad").</p>
+            <p>Si ha adquirido una subscripción, podrá cancelarla en cualquier momento a través de la tienda de iTunes o Google Play. La cancelación de una subscripción tendrá efecto al final de su ciclo de facturación. Mantendrá sus datos y la aplicación pasará al modo gratuito. Podrá subscribirse de nuevo en cualquier momento, aunque el precio de la subscripción podría ser diferente.</p>
+            <p>Su subscripción puede empezar con un periodo de prueba gratuito. La duración del periodo de prueba gratuito será comunicada en la página de subscripción. Si empieza un periodo de prueba gratuito, comenzaremos a facturar el precio de dicha subscripción al final del periodo de prueba gratuito. No recibirá ningún cargo si cancela su subscripción antes de que el periodo de prueba gratuito finalice.</p>
           </div>
         </div>
       </div>
     </div>
     <footer>  
-      Desarrollado con 💚 por Alejandro. Puedes contactar conmigo en mirabolsa@jubilaciontranquila.es
+      Desarrollado con 💚 por Alejandro. Puedes contactar conmigo en hola@jubilaciontranquila.es
     </footer>
+    
+    <!-- Load additional JS scripts here -->
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
