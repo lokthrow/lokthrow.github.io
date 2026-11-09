@@ -1,0 +1,58 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  appName: string;
+  slug: string;
+}
+
+const { appName, slug } = Astro.props;
+---
+
+<Layout title={`Privacidad de ${appName}`} description={`Política de privacidad y términos del servicio de ${appName}.`}>
+  <section class="section">
+    <div class="container prose">
+      <a href={`/apps/${slug}`} class="back">← {appName}</a>
+      <span class="eyebrow">{appName}</span>
+      <slot />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .back {
+    display: block;
+    margin-bottom: 32px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .prose :global(a) {
+    color: var(--accent);
+  }
+  .prose :global(.jump) {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 2em;
+  }
+  .prose :global(.terms) {
+    margin-top: 72px;
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    /* Deja hueco para la cabecera fija al navegar a #terminos */
+    scroll-margin-top: 88px;
+  }
+  .prose :global(.terms h1) {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+  }
+  .prose :global(.terms p:last-child) {
+    margin-bottom: 0;
+  }
+  @media (max-width: 480px) {
+    .prose :global(.terms) {
+      padding: 22px;
+    }
+  }
+</style>

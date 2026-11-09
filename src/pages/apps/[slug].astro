@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StoreBadges from '../../components/StoreBadges.astro';
+import { apps, type App } from '../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+
+const { app } = Astro.props as { app: App };
+const isExternal = (href: string) => href.startsWith('http');
+---
+
+<Layout title={app.name} description={`${app.name}: ${app.tagline}`}>
+  <div style={`--accent: ${app.accent}`}>
+    <section class="section hero">
+      <div class="container hero-inner">
+        <div>
+          <a href="/#apps" class="back">← Todas las apps</a>
+          <img src={app.icon} alt="" class="icon" width="88" height="88" />
+          <h1>{app.name}</h1>
+          <p class="lead">{app.tagline}</p>
+          <StoreBadges name={app.name} appStore={app.appStore} googlePlay={app.googlePlay} />
+          {app.website && (
+            <p class="website">
+              Web oficial: <a href={app.website} target="_blank" rel="noopener">{app.website.replace('https://', '')}</a>
+            </p>
+          )}
+        </div>
+        {app.screenshot && (
+          <img src={app.screenshot} alt={`Captura de ${app.name}`} class="screenshot" loading="lazy" />
+        )}
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="prose">
+          <span class="eyebrow">El proyecto</span>
+          <p class="summary">{app.summary}</p>
+          {app.credits && <p class="muted">{app.credits}</p>}
+        </div>
+
+        <div class="features">
+          {app.features.map((feature) => (
+            <div class="feature">
+              <h3>{feature.title}</h3>
+              <p class="muted">{feature.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container tech">
+        <div>
+          <span class="eyebrow">Tecnología</span>
+          <ul class="tags">
+            {app.tech.map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+        <a
+          href={app.privacy}
+          class="button ghost"
+          {...(isExternal(app.privacy) ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          Política de privacidad
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 56px;
+    align-items: center;
+  }
+  .back {
+    display: inline-block;
+    margin-bottom: 32px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .back:hover {
+    color: var(--text);
+  }
+  .icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    margin-bottom: 24px;
+  }
+  .lead {
+    margin-bottom: 28px;
+  }
+  .website {
+    margin-top: 20px;
+    color: var(--muted);
+  }
+  .website a {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .screenshot {
+    max-height: 560px;
+    width: auto;
+    border-radius: 28px;
+    box-shadow: 0 30px 60px -30px var(--accent);
+  }
+  .alt {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .summary {
+    font-size: 1.2rem;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .feature {
+    border-top: 2px solid var(--accent);
+    padding-top: 16px;
+  }
+  .feature p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  @media (max-width: 820px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .screenshot {
+      max-height: 420px;
+      margin: 0 auto;
+    }
+  }
+</style>
